@@ -1,11 +1,11 @@
 <mat-form-field>
   <mat-label>Select View</mat-label>
-  <select matNativeControl required>
-    <option value="Week Work">Week Work</option>
-    <option value="Week">Week</option>
-  </select>
+  <mat-select (selectionChange)="change($event.value)">
+    <mat-option value="dayGridWeek">Week</mat-option>
+    <mat-option value="workWeek">Work Week</mat-option>
+  </mat-select>
 </mat-form-field>
 
-<div><full-calendar [options]="calendarOptions"></full-calendar></div>
+<div><full-calendar #calendar [options]="calendarOptions"></full-calendar></div>
 
 

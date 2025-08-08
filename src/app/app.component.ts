@@ -8,7 +8,6 @@ import { Task, TaskService } from './task.service';
 import { ViewChild } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,7 +25,7 @@ export class AppComponent implements OnInit {
     this.getData()
   }
 
-  @ViewChild(FullCalendarComponent) calendarComponent!: FullCalendarComponent;
+  @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -63,6 +62,17 @@ export class AppComponent implements OnInit {
     alert('Event clicked: ' + info.event.title);
   }
 
+  change(viewName: string): void {
+    const calendar = this.calendarComponent.getApi();
+
+    // console.log(viewName);
+
+    if (viewName === 'workWeek') {
+      calendar.setOption('hiddenDays', [0, 6])
+    } else {
+      calendar.setOption('hiddenDays', []); 
+    }
+  }
   handleDateClick(arg: any): void {
     // alert('Date clicked: ' + arg.dateStr);
     console.log(arg);
@@ -78,7 +88,7 @@ export class AppComponent implements OnInit {
 
   // This Function is used to load the tasks
   loadTasks(): void {
-    // if (!this.calendarComponent) return;
+    if (!this.calendarComponent) return;
 
     const calendarApi = this.calendarComponent.getApi();
     calendarApi.removeAllEvents();
