@@ -1,0 +1,95 @@
+{
+  "tasks": [
+    {
+      "id": "830f",
+      "date": "2025-08-13",
+      "title": "Task 1",
+      "description": "Learn Angular",
+      "status": "Completed"
+    },
+    {
+      "id": "2d6d",
+      "date": "2025-08-21",
+      "title": "Task 2",
+      "description": "Learn React",
+      "status": "Pending"
+    },
+    {
+      "id": "e9ba",
+      "date": "2025-08-30",
+      "title": "Task 3",
+      "description": "Leran Python",
+      "status": "Completed"
+    },
+    {
+      "id": "c16f",
+      "date": "2025-08-30",
+      "title": "Task 4",
+      "description": "Learn Python",
+      "status": "Completed"
+    },
+    {
+      "id": "c694",
+      "date": "2025-08-14",
+      "title": "Task 4",
+      "description": "This is task 4",
+      "status": "Completed"
+    },
+    {
+      "id": "73a9",
+      "date": "2025-08-15",
+      "title": "Task 6",
+      "description": "This is Task 5",
+      "status": "Pending"
+    },
+    {
+      "id": "d6eb",
+      "date": "2025-08-23",
+      "title": "Task 7",
+      "description": "This is task 7",
+      "status": "Pending"
+    },
+    {
+      "id": "c77e",
+      "date": "2025-08-08",
+      "title": "Task 8",
+      "description": "This is task 8",
+      "status": "Completed"
+    },
+    {
+      "id": "adaf",
+      "date": "2025-08-22",
+      "title": "Task 9",
+      "description": "This is task 9",
+      "status": "Pending"
+    },
+    {
+      "id": "7fea",
+      "date": "2025-08-22",
+      "title": "Task 10",
+      "description": "This is task 10",
+      "status": "Pending"
+    },
+    {
+      "id": "8134",
+      "date": "2025-08-31",
+      "title": "Task 11",
+      "description": "This is task 11",
+      "status": "Completed"
+    },
+    {
+      "id": "040c",
+      "date": "2025-08-30",
+      "title": "Task 12",
+      "description": "This is Task 12",
+      "status": "Completed"
+    },
+    {
+      "id": "5449",
+      "date": "2025-08-19",
+      "title": "Task 13",
+      "description": "This is Task 13",
+      "status": "Pending"
+    }
+  ]
+}
