@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     headerToolbar: {
-      left: 'prev,next,today',
-      center: 'title',
-      right: 'addBtn, dayGridMonth, dayGridWeek'
+      left: 'today',
+      center: 'prev title next',
+      right: 'addBtn'
     },
     // weekends: false,
     // hiddenDays: [0, 6],
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     customButtons: {
       addBtn: {
         text: 'Add Task',
-        click: (info: any) => this.openDialog({mode: 'add'})
+        click: (info: any) => this.openDialog({ mode: 'add' })
       }
     },
 
@@ -68,14 +68,19 @@ export class AppComponent implements OnInit {
     // console.log(viewName);
 
     if (viewName === 'workWeek') {
+      calendar.changeView('dayGridWeek')
       calendar.setOption('hiddenDays', [0, 6])
+    } else if (viewName === 'dayGridWeek') {
+      calendar.changeView('dayGridWeek')
+      calendar.setOption('hiddenDays', [])
     } else {
-      calendar.setOption('hiddenDays', []); 
+      calendar.changeView('dayGridMonth')
+      calendar.setOption('hiddenDays', [])
     }
   }
   handleDateClick(arg: any): void {
     // alert('Date clicked: ' + arg.dateStr);
-    console.log(arg);
+    // console.log(arg);
     this.openDialog({ date: arg.dateStr, mode: 'add' })
   }
 
@@ -92,7 +97,7 @@ export class AppComponent implements OnInit {
 
     const calendarApi = this.calendarComponent.getApi();
     calendarApi.removeAllEvents();
-
+    console.log(new Date().toISOString().split('T')[0]);
     this.tasks.forEach(task => {
       calendarApi.addEvent({
         title: task.title,
@@ -123,6 +128,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  
+
 }
 
