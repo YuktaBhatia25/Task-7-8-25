@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getData()
+    this.loadProducts();
   }
 
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
@@ -91,6 +92,16 @@ export class AppComponent implements OnInit {
     });
   }
 
+  loadProducts(): void {
+    this.taskService.getProducts().subscribe(data => {
+      if(data.products){
+        data.products.forEach((product: any) => {
+          console.log(product.id,product.reviews[0].rating)
+        })
+      }
+    })
+  }
+
   // This Function is used to load the tasks
   loadTasks(): void {
     if (!this.calendarComponent) return;
@@ -99,9 +110,21 @@ export class AppComponent implements OnInit {
     calendarApi.removeAllEvents();
     console.log(new Date().toISOString().split('T')[0]);
     this.tasks.forEach(task => {
+      let color = '';
+      
+      if(task.status == 'Completed'){
+        color = 'green'
+      }
+      else if(task.status == 'Pending'){
+        color = 'red'
+      }
+      else {
+        color = 'orange'
+      }
       calendarApi.addEvent({
         title: task.title,
         start: new Date(task.date).toISOString().split('T')[0],
+        backgroundColor: color,
         allDay: true,
         extendedProps: {
           description: task.description,

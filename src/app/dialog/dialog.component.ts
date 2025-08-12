@@ -12,7 +12,7 @@ import { Validators } from '@angular/forms';
 export class DialogComponent {
   task: Task[] = [];
   taskForm!: FormGroup;
-  mode: 'add' | 'view';
+  mode: 'add' | 'view' | 'edit';
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -49,6 +49,21 @@ export class DialogComponent {
       this.dialogRef.close(newTask);
     });
   }
+
+  edit(){
+    console.log("clicked");
+    this.mode = 'edit';
+    this.taskForm.enable();
+  }
+
+  update(){
+    const task = this.taskForm.value;
+    // console.log(task);
+    this.taskService.updateTask(this.data.id, task).subscribe(() => {
+      this.dialogRef.close(task);
+    })
+  }
+
   onclose(): void {
     this.dialogRef.close();
   }
