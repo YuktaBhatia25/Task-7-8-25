@@ -1,12 +1,16 @@
 <mat-form-field>
   <mat-label>Select View</mat-label>
-  <mat-select (selectionChange)="change($event.value)">
+  <mat-select (selectionChange)="change($event.value)" [(value)]="selectedView">
     <mat-option value="dayGridWeek">Week</mat-option>
     <mat-option value="workWeek">Work Week</mat-option>
     <mat-option value="dayGridMonth">Month</mat-option>
+    <mat-option value="list">List</mat-option>
   </mat-select>
 </mat-form-field>
 
-<div><full-calendar #calendar [options]="calendarOptions"></full-calendar></div>
-
-
+<div *ngIf="selectedView != 'list'">
+  <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+</div>
+<div *ngIf="selectedView == 'list'">
+  <app-task-list [tasks]="tasks"></app-task-list>
+</div>

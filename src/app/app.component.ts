@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
 
   tasks: Task[] = [];
 
+  selectedView: string = 'month';
+
   constructor(private dialog: MatDialog, private taskService: TaskService) { }
 
   ngOnInit() {
@@ -74,7 +76,10 @@ export class AppComponent implements OnInit {
     } else if (viewName === 'dayGridWeek') {
       calendar.changeView('dayGridWeek')
       calendar.setOption('hiddenDays', [])
-    } else {
+    } else if (viewName === 'list') {
+      this.selectedView = 'list'
+    }
+    else {
       calendar.changeView('dayGridMonth')
       calendar.setOption('hiddenDays', [])
     }
@@ -91,12 +96,12 @@ export class AppComponent implements OnInit {
       this.loadTasks();
     });
   }
-
+  
   loadProducts(): void {
     this.taskService.getProducts().subscribe(data => {
-      if(data.products){
+      if (data.products) {
         data.products.forEach((product: any) => {
-          console.log(product.id,product.reviews[0].rating)
+          console.log(product.id, product.reviews[0].rating)
         })
       }
     })
@@ -111,11 +116,11 @@ export class AppComponent implements OnInit {
     console.log(new Date().toISOString().split('T')[0]);
     this.tasks.forEach(task => {
       let color = '';
-      
-      if(task.status == 'Completed'){
+
+      if (task.status == 'Completed') {
         color = 'green'
       }
-      else if(task.status == 'Pending'){
+      else if (task.status == 'Pending') {
         color = 'red'
       }
       else {

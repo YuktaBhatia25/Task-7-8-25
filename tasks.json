@@ -74,7 +74,7 @@
       "date": "2025-08-13",
       "title": "Test 6",
       "description": "test 6",
-      "status": "To Do",
+      "status": "Completed",
       "id": "1159"
     },
     {
@@ -89,6 +89,41 @@
       "date": "2025-08-28",
       "title": "Task 9",
       "description": "test",
+      "status": "Pending"
+    },
+    {
+      "date": "2025-09-04",
+      "title": "Test 7",
+      "description": "test 9",
+      "status": "Completed",
+      "id": "6610"
+    },
+    {
+      "id": "556c",
+      "date": "2025-08-20",
+      "title": "Test 7",
+      "description": "test 7",
+      "status": "Pending"
+    },
+    {
+      "id": "c8c5",
+      "date": "2025-09-05",
+      "title": "Test 8",
+      "description": "test 8",
+      "status": "Pending"
+    },
+    {
+      "id": "142d",
+      "date": "2025-09-01",
+      "title": "Test 9",
+      "description": "test 9",
+      "status": "Pending"
+    },
+    {
+      "id": "a794",
+      "date": "2025-09-08",
+      "title": "Test 10",
+      "description": "Test 10",
       "status": "Pending"
     }
   ]
