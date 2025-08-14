@@ -13,24 +13,57 @@ export class TaskListComponent implements OnInit {
   displayedColumns: string[] = ['date', 'title', 'description', 'status'];
   dataSource = new MatTableDataSource<Task>();
 
-  status: string = ''
-
   ngOnInit() {
     this.dataSource.data = [...this.tasks]
   }
 
-  filterStatus(status: string) {
-    if (status == 'Completed') {
-      console.log(status)
+  filterValues = {
+    startDate: '',
+    endDate: '',
+    title: '',
+    description: '',
+    status: ''
+  };
+ 
+ 
+  filters() {
+    let data = [...this.tasks];
+
+    if (this.filterValues.startDate && this.filterValues.endDate) {
+      // console.log(this.filterValues.startDate, this.filterValues.endDate);
+      const start = new Date(this.filterValues.startDate);
+      const end = new Date(this.filterValues.endDate);
+      data = data.filter(task => {
+        const taskDate = new Date(task.date);
+        return taskDate >= start && taskDate <= end;
+      });
+      this.dataSource.data = data
+      .sort((a, b) => 
+        new Date(a.date).getDate() - new Date(b.date).getDate()
+      );
     }
-    else if (status == 'Pending') {
-      console.log(status);
-    } else if (status == 'To Do') {
-      console.log(status);
-    }
-  }
-  filterDate(){
     
+    if(this.filterValues.status){
+      data = data.filter(task => 
+        task.status.toLowerCase() == this.filterValues.status.toLowerCase()
+      );
+      this.dataSource.data = data;
+    }
+
+    if(this.filterValues.title){
+      data = data.filter(task =>
+        task.title.toLowerCase().includes(this.filterValues.title.toLowerCase())
+      );
+      this.dataSource.data = data;
+    }
+
+    if(this.filterValues.description){
+      // console.log(this.filterValues.description);
+      data = data.filter(task =>
+        task.description.toLowerCase().includes(this.filterValues.description.toLowerCase())
+      );
+      this.dataSource.data = data;
+    }
+    this.dataSource.data = data;
   }
-  
 }

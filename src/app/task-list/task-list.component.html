@@ -2,9 +2,9 @@
     <div class="search">
         <mat-form-field>
             <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input  [rangePicker]="picker">
-                <input matStartDate formControlName="start" placeholder="Start date">
-                <input matEndDate formControlName="end" placeholder="End date">
+            <mat-date-range-input  [rangePicker]="picker" (datechange)="filters()">
+                <input matStartDate [(ngModel)]="filterValues.startDate" placeholder="Start date">
+                <input matEndDate [(ngModel)]="filterValues.endDate" placeholder="End date">
             </mat-date-range-input>
             <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -12,8 +12,17 @@
 
         </mat-form-field>
         <mat-form-field>
+            <mat-label>Filter By Title</mat-label>
+            <input matInput [(ngModel)]="filterValues.title" (input)="filters()">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Filter By Description</mat-label>
+            <input matInput [(ngModel)]="filterValues.description" (input)="filters()">
+        </mat-form-field>
+        <mat-form-field class="status">
             <mat-label>Filter By Status</mat-label>
-            <mat-select (selectionChange)="filterStatus($event.value)" [(value)]="status">
+            <mat-select (selectionChange)="filters()" [(value)]="filterValues.status">
+                <mat-option value="">All</mat-option>
                 <mat-option value="To Do">To Do</mat-option>
                 <mat-option value="Pending">Pending</mat-option>
                 <mat-option value="Completed">Completed</mat-option>

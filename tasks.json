@@ -85,11 +85,11 @@
       "status": "Pending"
     },
     {
-      "id": "dc9f",
       "date": "2025-08-28",
       "title": "Task 9",
       "description": "test",
-      "status": "Pending"
+      "status": "Completed",
+      "id": "dc9f"
     },
     {
       "date": "2025-09-04",
@@ -113,18 +113,18 @@
       "status": "Pending"
     },
     {
-      "id": "142d",
       "date": "2025-09-01",
       "title": "Test 9",
       "description": "test 9",
-      "status": "Pending"
+      "status": "To Do",
+      "id": "142d"
     },
     {
-      "id": "a794",
       "date": "2025-09-08",
       "title": "Test 10",
       "description": "Test 10",
-      "status": "Pending"
+      "status": "To Do",
+      "id": "a794"
     }
   ]
 }
